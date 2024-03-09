@@ -20,14 +20,7 @@ export default function Card(props) {
           <p className="card-text">Generes:{props.generes}</p> */}
           <p className="card-text"><b>Description: </b>{props.desc}</p>
 
-          <Link
-           
-            to="/description"
-            className="btn btn-primary"
-            onClick={setContext}
-          >
-            Book Ticket
-          </Link>
+          
         </div>
       </div>
     </div>
