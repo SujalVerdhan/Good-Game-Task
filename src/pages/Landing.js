@@ -3,12 +3,16 @@ import Card from "../components/card";
 import UserContext from "../context/UserContext";
 export const Landing = () => {
   const [data, setData] = useState([]);
-  const { setConData } = useContext(UserContext);
+  const [search,setSearch]=useState("")
+  console.log(search)
+  // const { setConData } = useContext(UserContext);
   const fetchData = async () => {
-    const res = await fetch("https://api.tvmaze.com/search/shows?q=all");
+    const res = await fetch("https://api.punkapi.com/v2/beers");
     const data = await res.json();
+    
     setData(data);
-    setConData(data);
+    console.log(data)
+    // setConData(data);
   };
   console.log(data);
 
@@ -19,21 +23,27 @@ export const Landing = () => {
   return (
     <>
       <div className="container ">
-      <h1 className="text-center text-success">QuadB Tech Task</h1>
+      <h1 className="text-center text-success">Good Game theory Task</h1>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" value={search} onChange={(e)=>{
+        setSearch(e.target.value)
+      }} aria-label="Search"/>
+      
         <div className="row w-100 mx-auto justify-content-center ">
           {data ? (
-            data.map((i) => {
+           data.filter(item=>item.name.toLowerCase().includes(search.toLowerCase())).map((i) => {
+            console.log(i)
               return (
                 <Card
                   datas={i}
-                  name={i.show.name}
-                  runtime={i.show.runtime}
-                  desc={i.show.summary}
-                  generes={i.show.genres}
+                  name={i.name}
+                  // runtime={i.show.runtime}
+                  desc={i.description}
+                  // generes={i.show.genres}
+                  tag={i.tagline}
                   image={
-                    i.show.image === null ? "not Found" : i.show.image.medium
+                    i.image === null ? "not Found" : i.image_url
                   }
-                  language={i.show.language}
+                  // language={i.show.language}
                 />
               );
             })

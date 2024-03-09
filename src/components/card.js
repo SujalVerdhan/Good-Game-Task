@@ -12,12 +12,14 @@ export default function Card(props) {
   return (
     <div className="col-lg-3 p-2 col-md-6 col-sm-6 justify-content-center justify-around">
       <div className="card text-center p-2" style={{ width: "18rem" }}>
-        <img className="card-img-top" src={props.image} alt={props.image} />
+        <img style={{height:"300px",width:"150px" ,margin:"0 auto"}} className="card-img-top h-150px w-150px" src={props.image} alt={props.image} />
         <div className="card-body">
-          <h5 className="card-title">{props.name}</h5>
-          <p className="card-text">Runtime:{props.runtime}</p>
-          <p className="card-text">Generes:{props.generes}</p>
-          <p className="card-text">Language:{props.language}</p>
+          <h5 className="card-title"><b>Name:</b> {props.name}</h5>
+          <p className="card-text"><b>TagLine: </b>{props.tag}</p>
+          {/* <p className="card-text">Runtime:{props.runtime}</p>
+          <p className="card-text">Generes:{props.generes}</p> */}
+          <p className="card-text"><b>Description: </b>{props.desc}</p>
+
           <Link
            
             to="/description"

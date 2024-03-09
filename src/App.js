@@ -3,7 +3,7 @@ import "./App.css";
 
 import { Landing } from "./pages/Landing";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
-import { Description } from "./pages/Description";
+
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/description" element={<Description />} />
+         
         </Routes>
       </BrowserRouter>
     </UserContextProvider>
